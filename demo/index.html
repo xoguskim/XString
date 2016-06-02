@@ -1,0 +1,81 @@
+<html>
+<head>
+<meta charset="UTF-8">
+<script src="../xogus.xstring.js"></script>
+<link href="css/bootstrap.css" rel="stylesheet"></link>
+</head>
+<body class="container">
+	<div class="row" style="margin-top: 20px">
+
+	    <div class="col-md-12">
+
+			<div class="row" style="margin-top: 20px;">
+				<div class="panel panel-default">
+					<div class="panel-heading"> 
+						<h3>String.ellipsis(n)</h3>
+					</div>
+
+					<div class="panel-body">
+						<div>
+							<label>Step 1. Input text you want to test</label><br/>
+							<input id="ellipsis_test_string" type="text" name="teststring" value="123456789" size="80%"/><br />
+						</div>
+						<hr />
+						<div>
+							<label>Step 2. Test ellipsis method using range control to pass ellipsis length</label><br />
+							<input id="ellipsis_length" type="range" name="ellipsis" value="4" min="1" max="10" step="1" /><br />
+						</div>
+						<hr />
+						<div>
+							<label>Step 3. Check the method call statement and result of execution with parameters you choiced</label> <br />
+							<p id="ellipsis_result_string" ></p><br />
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+
+
+	    <div class="col-md-12">
+
+			<div class="row" style="margin-top: 20px;">
+				<div class="panel panel-default">
+					<div class="panel-heading"> 
+						<h3>String.isCSSColorValue()</h3>
+					</div>
+
+					<div class="panel-body">
+						
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>	
+</body>
+<script>
+
+
+	var listener = function() {
+		window.requestAnimationFrame(function() {
+			var testString = document.getElementById('ellipsis_test_string').value;
+			var elResult = document.getElementById('ellipsis_result_string');
+
+			var n = parseInt(elLength.value);
+
+			elResult.textContent = '"' + testString + '".ellipsis(' + n + ') => ' + testString.ellipsis(n);
+		});
+	};
+
+	var elLength = document.getElementById('ellipsis_length');
+	elLength.addEventListener("mousedown", function() {
+		listener();
+		elLength.addEventListener("mousemove", listener);
+	});
+
+	elLength.addEventListener("mouseup", function() {
+		elLength.removeEventListener("mousemove", listener);
+	});
+
+	listener();
+</script>
+</html>

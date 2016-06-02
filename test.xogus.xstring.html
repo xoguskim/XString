@@ -4,6 +4,7 @@
 <script src="xogus.xstring.js"></script>
 <script>
 	var testString = [];
+	var testColors = [];
 	var testCases_source = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 15, 20];
 	var testCases_ellipsis = ['x', undefined, -3, 0, 1, 2, 3, 4, 6, 7, 8, 9, 13, 15, 20];
 
@@ -16,6 +17,20 @@
 
 		//	korean
 		testString[2] = '가나다라마바사아자차카타파하_고노도로모보소오조초코토포호';
+
+
+		//  testColors
+		testColors.push( '#12abef' );
+		testColors.push( '#fff' );
+		testColors.push( '#f' );
+		testColors.push( '#zzzzzz' );
+		testColors.push( 'rgb(255, 0, 0)' );
+		testColors.push( 'rgba(255, 0, 0, 0.5)' );
+		testColors.push( 'rgb(5255, 0, 0)' );
+		testColors.push( 'rgba(255, 0, 0)' );
+		testColors.push( 'white' );
+		testColors.push( 'transparent' );
+		testColors.push( 'myfavoritcolor' );
 	}
 
 	function execTestCase(name, ts) {
@@ -52,6 +67,34 @@
 		}
 	}
 
+	function execColorTestCase(name) {
+		var elTable = document.getElementById(name);
+
+		var tr = document.createElement('tr');
+		var th = document.createElement('th');
+		th.textContent = 'value';
+		tr.appendChild(th);
+
+		var th = document.createElement('th');
+		th.textContent = 'is CSS color value';
+		tr.appendChild(th);
+
+		elTable.appendChild(tr);
+
+		for( var i=0; i < testColors.length; i++ ) {
+			tr = document.createElement('tr');
+
+			var td = document.createElement('td');
+			td.textContent = testColors[i];
+			tr.appendChild(td);
+
+			td = document.createElement('td');
+			td.textContent = testColors[i].isCSSColorValue();
+			tr.appendChild(td);
+
+			elTable.appendChild(tr);
+		}
+	}
 </script>
 </head>
 <body>
@@ -64,6 +107,8 @@
 	<table id="korean" border="1">
 	</table>
 		
+	<table id="colors" border="1">
+	</table>
 		
 		
 </body>
@@ -73,5 +118,6 @@
 	execTestCase('numeric', testString[0]);
 	execTestCase('alpha', testString[1]);
 	execTestCase('korean', testString[2]);
+	execColorTestCase('colors')
 </script>
 </html>

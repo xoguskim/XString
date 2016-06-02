@@ -1,0 +1,77 @@
+<html>
+<head>
+<meta charset="UTF-8">
+<script src="xogus.xstring.js"></script>
+<script>
+	var testString = [];
+	var testCases_source = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 15, 20];
+	var testCases_ellipsis = ['x', undefined, -3, 0, 1, 2, 3, 4, 6, 7, 8, 9, 13, 15, 20];
+
+	function initTestData() {
+		// numeric
+		testString[0] = '0123456789_0123456789_0123456789';
+
+		//	alpha
+		testString[1] = 'abcdefghijklmnopqrstuvwxyz_ABCDEFGHIJKLMNOPQRSTUVWXYZ';
+
+		//	korean
+		testString[2] = '가나다라마바사아자차카타파하_고노도로모보소오조초코토포호';
+	}
+
+	function execTestCase(name, ts) {
+		var elTable = document.getElementById(name);
+
+		var tr = document.createElement('tr');
+		var th = document.createElement('th');
+		th.textContent = '';
+		tr.appendChild(th);
+
+		for( var j=0; j < testCases_ellipsis.length; j++ ) {
+			th = document.createElement('th');
+			th.textContent = testCases_ellipsis[j];
+			tr.appendChild(th);
+		}
+		elTable.appendChild(tr);
+
+		for( var i=0; i < testCases_source.length; i++ ) {
+			var src = ts.substr(0, testCases_source[i]);
+
+			tr = document.createElement('tr');
+
+			var td = document.createElement('td');
+			td.textContent = src;
+			tr.appendChild(td);
+
+			for( var j=0; j < testCases_ellipsis.length; j++ ) {
+				var td = document.createElement('td');
+				td.textContent = src.ellipsis( testCases_ellipsis[j] );
+				tr.appendChild(td);
+			}
+
+			elTable.appendChild(tr);
+		}
+	}
+
+</script>
+</head>
+<body>
+	<table id="numeric" border="1">
+	</table>
+
+	<table id="alpha" border="1">
+	</table>
+
+	<table id="korean" border="1">
+	</table>
+		
+		
+		
+</body>
+<script>
+
+	initTestData();
+	execTestCase('numeric', testString[0]);
+	execTestCase('alpha', testString[1]);
+	execTestCase('korean', testString[2]);
+</script>
+</html>

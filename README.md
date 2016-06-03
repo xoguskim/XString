@@ -2,7 +2,7 @@
 
   Javascript string utiltity library extension.
 
-  [Online DEMO](http://xogsuk.tk/xstring/) site is available.
+  [Online DEMO](http://xogus.ga/xstring/) site is available.
 
 
 # How to use

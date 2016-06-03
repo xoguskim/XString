@@ -1,6 +1,8 @@
 # XString
 
-Javascript string utiltity library extension
+  Javascript string utiltity library extension.
+
+  [Online DEMO](http://xogsuk.tk/xstring/) site is available.
 
 
 # How to use
